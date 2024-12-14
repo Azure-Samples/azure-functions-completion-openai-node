@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!--
 ---
 name: Azure Function using OpenAI TextCompletion input binding
@@ -17,7 +16,7 @@ languages:
 -->
 
 # Azure Functions
-## Azure Functions extension for OpenAI TextCompletion input binding
+## Azure Functions extension for OpenAI TextCompletion input binding with JavaScript
 
 This sample highlights how to use the Azure Functions OpenAI TextCompletion input binding to send content to Azure OpenAI and get a result
 
