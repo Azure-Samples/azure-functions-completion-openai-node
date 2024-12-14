@@ -3,6 +3,18 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+<<<<<<< HEAD
+# Azure Functions localsettings file
+local.settings.json
+
+# Azurite config files
+__azurite*
+__blobstorage*
+__queue*
+__table*
+
+=======
+>>>>>>> d0b4c52a663d6168de49532cd5bf98116e91edac
 # User-specific files
 *.rsuser
 *.suo
@@ -396,3 +408,7 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+<<<<<<< HEAD
+.azure
+=======
+>>>>>>> d0b4c52a663d6168de49532cd5bf98116e91edac
