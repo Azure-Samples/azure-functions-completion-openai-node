@@ -25,10 +25,11 @@ You can learn more about the OpenAI trigger and bindings extension in the [GitHu
 
 ## Prerequisites
 
-* [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/6.0) or greater (Visual Studio 2022 recommended)
+* [Node 20](https://nodejs.org/)
 * [Azure Functions Core Tools v4.x](https://learn.microsoft.com/azure/azure-functions/functions-run-local?tabs=v4%2Cwindows%2Cnode%2Cportal%2Cbash)
 * [Azure OpenAI resource](https://learn.microsoft.com/azure/openai/overview)
 * [Azurite](https://github.com/Azure/Azurite)
+* [Azure Developer CLI](https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/install-azd) to create Azure resources automatically - recommended
 
 ## Prepare your local environment
 
@@ -36,7 +37,7 @@ You can learn more about the OpenAI trigger and bindings extension in the [GitHu
 
 Run the following command to download the project code
 ```bash
-azd init -t https://github.com/Azure-Samples/azure-functions-completion-openai-dotnet
+azd init -t https://github.com/Azure-Samples/azure-functions-completion-openai-node
 ```
 
 Enable scripts to create local settings file after deployment
@@ -65,7 +66,7 @@ Take note of the value of `AZURE_OPENAI_ENDPOINT` which can be found in `./.azur
 AZURE_OPENAI_ENDPOINT="https://cog-<unique string>.openai.azure.com/"
 ```
 
-Alternatively you can [create an OpenAI resource](https://portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) in the Azure portal to get your key and endpoint. After it deploys, click Go to resource and view the Endpoint value.  You will also need to deploy a model, e.g. with name `completion` and model `gpt-35-turbo`.
+Alternatively you can [create an OpenAI resource](https://portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) in the Azure portal to get your key and endpoint. After it deploys, click Go to resource and view the Endpoint value.  You will also need to deploy a model, e.g. with name `completion` and model `gpt-4o`.
 
 ### Create local.settings.json (should be in the same folder as host.json). This will be created if you run azd provision
 ```json
@@ -73,7 +74,7 @@ Alternatively you can [create an OpenAI resource](https://portal.azure.com/#crea
   "IsEncrypted": false,
   "Values": {
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
     "AZURE_OPENAI_ENDPOINT": "<paste from above>",
     "CHAT_MODEL_DEPLOYMENT_NAME": "completion"
     }
@@ -82,7 +83,7 @@ Alternatively you can [create an OpenAI resource](https://portal.azure.com/#crea
 
 ### Permissions
 #### Add the following permissions to the Azure OpenAI resource:
-<b>Cognitive Services OpenAI User</b> - Add your account (contoso.microsoft.com) to the OpenAI resource if you did not create the OpenAI resource to test locally and the Azure Function App's Managed Identity when running in Azure. If you used `azd provision` this step is already done - your logged in user and your function's managed idenitty already have permissions granted.  
+<b>Cognitive Services User</b> - Add your account (contoso@microsoft.com) to the OpenAI resource if you did not create the OpenAI resource to test locally and the Azure Function App's Managed Identity when running in Azure. If you used `azd provision` this step is already done - your logged in user and your function's managed idenitty already have permissions granted.  
 
 ## Run your app using Visual Studio Code
 
@@ -90,14 +91,7 @@ Alternatively you can [create an OpenAI resource](https://portal.azure.com/#crea
 1. Run the `code .` code command to open the project in Visual Studio Code.
 1. In the command palette (F1), type `Azurite: Start`, which enables debugging using local storage.
 1. Press **Run/Debug (F5)** to run in the debugger. Select **Debug anyway** if prompted about local emulator not running.
-1. Send POST requests to the `PostUserContent` endpoint using your HTTP test tool. If you have the [RestClient](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) extension installed, you can execute requests directly from the [`test.http`](./app/test.http) project file.
-
-## Run your app using Visual Studio
-
-1. Open the `CompletionSample.sln` solution file in Visual Studio.
-1. Press **Run/F5** to run in the debugger. Make a note of the `localhost` URL endpoints, including the port, which might not be `7071`.
-1. Open the [`test.http`](./app/test.http) project file, update the port on the `localhost` URL (if needed), and then use the built-in HTTP client to call the `PostUserContent` endpoint
-
+1. Test by sending GET requests to the `whois` endpoint and POST requests to the `PostUserContent` endpoint using your HTTP test tool. If you have the [RestClient](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) extension installed, you can execute requests directly from the [`test.http`](./src/test.http) project file.
 
 ## Deploy to Azure
 
