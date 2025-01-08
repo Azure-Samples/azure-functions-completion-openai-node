@@ -9,9 +9,10 @@ products:
 - entra-id
 urlFragment: azure-functions-completion-openai-dotnet
 languages:
-- JavaScript
-- bicep
 - azdeveloper
+- bicep
+- nodejs
+- javascript
 ---
 -->
 
@@ -34,11 +35,6 @@ You can learn more about the OpenAI trigger and bindings extension in the [GitHu
 ## Prepare your local environment
 
 ### Create Azure OpenAI resource for local and cloud dev-test
-
-Run the following command to download the project code
-```bash
-azd init -t https://github.com/Azure-Samples/azure-functions-completion-openai-node
-```
 
 Enable scripts to create local settings file after deployment
 Mac/Linux:
@@ -100,14 +96,6 @@ Run this command to provision the function app, with any required Azure resource
 ```shell
 azd up
 ```
-
-You're prompted to supply these required deployment parameters:
-
-| Parameter | Description |
-| ---- | ---- |
-| _Environment name_ | An environment that's used to maintain a unique deployment context for your app. You won't be prompted if you created the local project using `azd init`.|
-| _Azure subscription_ | Subscription in which your resources are created.|
-| _Azure location_ | Azure region in which to create the resource group that contains the new Azure resources. Only regions that currently support the Flex Consumption plan are shown.|
 
 After publish completes successfully, `azd` provides you with the URL endpoints of your new functions, but without the function key values required to access the endpoints. To learn how to obtain these same endpoints along with the required function keys, see [Invoke the function on Azure](https://learn.microsoft.com/azure/azure-functions/create-first-function-azure-developer-cli?pivots=programming-language-dotnet#invoke-the-function-on-azure) in the companion article [Quickstart: Create and deploy functions to Azure Functions using the Azure Developer CLI](https://learn.microsoft.com/azure/azure-functions/create-first-function-azure-developer-cli?pivots=programming-language-dotnet).
 
