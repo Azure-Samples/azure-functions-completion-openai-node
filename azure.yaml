@@ -1,8 +1,8 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
 
-name: azure-functions-completion-openai-dotnet
+name: azure-functions-completion-openai-node
 metadata:
-  template:  azure-functions-completion-openai-dotnet@1.0.0
+  template:  azure-functions-completion-openai-node@1.0.0
 services:
   api:
     project: ./src

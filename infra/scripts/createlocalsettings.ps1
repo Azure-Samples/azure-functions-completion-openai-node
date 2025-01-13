@@ -15,7 +15,7 @@ if (-not (Test-Path ".\src\local.settings.json")) {
         "IsEncrypted" = "false";
         "Values" = @{
             "AzureWebJobsStorage" = "UseDevelopmentStorage=true";
-            "FUNCTIONS_WORKER_RUNTIME" = "dotnet-isolated";
+            "FUNCTIONS_WORKER_RUNTIME" = "node";
             "AZURE_OPENAI_ENDPOINT" = "$AZURE_OPENAI_ENDPOINT";
             "CHAT_MODEL_DEPLOYMENT_NAME" = "completion";
         }
