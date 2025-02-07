@@ -36,6 +36,12 @@ You can learn more about the OpenAI trigger and bindings extension in the [GitHu
 
 ### Create Azure OpenAI resource for local and cloud dev-test
 
+Run the following command to download the project code
+
+```bash
+azd init -t https://github.com/Azure-Samples/azure-functions-completion-openai-node
+```
+
 Enable scripts to create local settings file after deployment
 Mac/Linux:
 ```bash
@@ -45,7 +51,7 @@ Windows:
 ```Powershell
 set-executionpolicy remotesigned
 ```
-Run the follow command to provision resoruces in Azure
+Run the follow command to provision resources in Azure
 ```bash
 azd provision
 ```
@@ -79,7 +85,7 @@ Alternatively you can [create an OpenAI resource](https://portal.azure.com/#crea
 
 ### Permissions
 #### Add the following permissions to the Azure OpenAI resource:
-<b>Cognitive Services User</b> - Add your account (contoso@microsoft.com) to the OpenAI resource if you did not create the OpenAI resource to test locally and the Azure Function App's Managed Identity when running in Azure. If you used `azd provision` this step is already done - your logged in user and your function's managed idenitty already have permissions granted.  
+<b>Cognitive Services User</b> - Add your account (contoso@microsoft.com) to the OpenAI resource if you did not create the OpenAI resource to test locally and the Azure Function App's Managed Identity when running in Azure. If you used `azd provision` this step is already done - your logged in user and your function's managed identity already have permissions granted.
 
 ## Run your app using Visual Studio Code
 
